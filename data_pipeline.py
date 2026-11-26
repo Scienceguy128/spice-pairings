@@ -168,7 +168,7 @@ def parse_recipe(page, aliases):
         "pageid": page["pageid"],
         "title": title,
         "revid": page["revid"],
-        "url": "https://en.wikibooks.org/wiki/" + quote(page["title"].replace(" ", "_")),
+        "url": "https://en.wikibooks.org/wiki/" + quote(page["title"].replace(" ", "_"), safe=":/()',"),
         "line_count": len(lines),
         "ingredients": found,
         "blends": blends,

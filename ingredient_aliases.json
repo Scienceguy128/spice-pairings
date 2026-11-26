@@ -61,7 +61,12 @@
     "lemon pepper",
     "mint (?:chocolate|candies|candy)",
     "cinnamon (?:rolls?|buns?|bread)",
-    "parsley root"
+    "parsley root",
+    "mustard (?:seed )?oil",
+    "pepper ?jack(?: cheese)?",
+    "dr\\.? pepper",
+    "pepper vodka",
+    "(?:sage|herb)[- ]flavou?red sausages?"
   ],
   "rules": [
     {"id": "curry_leaf", "patterns": ["curry lea(?:f|ves)", "kari patta", "curry patta", "kadi patta"]},
