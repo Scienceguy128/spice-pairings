@@ -21,6 +21,34 @@ python -m unittest discover -s tests
 node --test tests/
 ```
 
+## Host on GitHub Pages
+
+This app is compatible with [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages): it serves static HTML, CSS, JavaScript and data, and the interactive network runs in the visitor's browser. The Python scripts are an offline data-preparation step, not a backend. No build tool or server is needed for deployment.
+
+The workflow in `.github/workflows/deploy-pages.yml` publishes **only `web/`**, with `index.html` at the site's root. Relative script paths already work under the project URL. Local `file://` usage remains unchanged.
+
+### First deployment
+
+1. **Review before going public.** GitHub Free requires a public repository for Pages. Review tracked files **and Git history** for credentials, private material and permission to publish. Making the repository public exposes more than the website: for example, the tracked `data/audit.json` is readable in the repository even though it is not deployed. Ignore rules do not remove previously committed files; rotate any exposed credentials and address their history before publishing.
+2. Once that review is complete, open the repository's **Settings > General > Danger Zone > Change repository visibility**, choose **public**, and follow GitHub's confirmation prompts. Alternatively, an eligible paid GitHub plan can use a private repository, but the Pages site and its deployed data are still public.
+3. Open **Settings > Pages**. Under **Build and deployment**, set **Source** to **GitHub Actions**. If Actions is disabled, enable it under **Settings > Actions > General**, allowing the official actions used by this workflow.
+4. Merge or push the deployment workflow onto **`main`**. Each push to `main` deploys the committed site. If that push happened before Pages was configured, open **Actions > Deploy to GitHub Pages > Run workflow**, select **`main`**, and run it. Runs on other branches do not deploy.
+5. Watch the run in **Actions**. A *workflow* is the automated instruction file; the *artifact* is the packaged `web/` folder; *deployment* publishes that package to Pages. There is no recipe download or Python execution in this workflow.
+6. After a successful run, open **Settings > Pages > Visit site**. The expected default address is [https://scienceguy128.github.io/spice-pairings/](https://scienceguy128.github.io/spice-pairings/); use the URL GitHub reports as authoritative. Check that the network, cuisine filter, ingredient search, pair details and source links work.
+
+Keep the Wikibooks attribution in the page footer and the vendored Cytoscape license when publishing. Do not put secrets or private data in `web/`: visitors can download its files.
+
+### Updates and troubleshooting
+
+For UI updates, change files in `web/` and merge or push to `main`. For data updates, run the Python commands in Quick start locally, review and commit the regenerated `web/data/` files, then merge or push to `main`. Publishing uses that committed snapshot; it does **not** refresh recipes automatically.
+
+- **Pages settings unavailable:** check repository visibility, account-plan eligibility and your repository permissions.
+- **Deployment failed:** open the failing step in Actions. Check that Pages uses GitHub Actions, the required actions are allowed, and the `github-pages` environment permits deployment from `main`. The workflow requests `contents: read`, `pages: write` and `id-token: write`.
+- **404 at the site:** confirm the deployment succeeded and use the exact URL shown in Settings > Pages, including `/spice-pairings/`.
+- **Page loads but graph is missing:** check browser developer tools for failed script requests or console errors. Ensure all files under `web/` were committed; hosted filenames are case-sensitive.
+
+For details, see GitHub's [site creation guide](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) and [custom Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
 ## How the score works
 
 For every pair of tracked ingredients, over **N** deduplicated recipes in the current selection:
