@@ -1,4 +1,6 @@
+import json
 import sys
+import tempfile
 import unittest
 from tempfile import TemporaryDirectory
 from pathlib import Path
@@ -6,6 +8,8 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import data_pipeline as dp  # noqa: E402
+import fetch_wikibooks as fw  # noqa: E402
+from cuisine_categories import category_links, origin_category_map  # noqa: E402
 
 ALIASES = dp.load_aliases()
 
@@ -109,6 +113,159 @@ class MatchingTests(unittest.TestCase):
         self.assertEqual(dp.ingredient_lines(text), ["* thyme"])
 
 
+class CuisineTests(unittest.TestCase):
+    def test_origin_categories_include_ancestors_and_ignore_unrelated_categories(self):
+        parents = {
+            "Thai recipes": {"Southeast Asian recipes"},
+            "Southeast Asian recipes": {"Asian recipes"},
+            "Asian recipes": {"Recipes by origin"},
+            "Main course recipes": {"Recipes by course"},
+            "Cycle A recipes": {"Cycle B recipes"},
+            "Cycle B recipes": {"Cycle A recipes"},
+        }
+        categories = origin_category_map(parents)
+        self.assertEqual(categories["thai recipes"], ["Asian", "Southeast Asian", "Thai"])
+        self.assertNotIn("main course recipes", categories)
+        self.assertNotIn("cycle a recipes", categories)
+
+    def test_fetch_combines_paginated_category_parents(self):
+        pages = [{"content": "[[Category:Thai recipes]] [[Category:Main course recipes]]"}]
+        responses = [
+            {"query": {"pages": [
+                {"title": "Category:Thai recipes", "categories": [{"title": "Category:Southeast Asian recipes"}]},
+                {"title": "Category:Main course recipes", "categories": [{"title": "Category:Recipes by course"}]},
+            ]}, "continue": {"clcontinue": "next", "continue": "||"}},
+            {"query": {"pages": [
+                {"title": "Category:Thai recipes", "categories": [{"title": "Category:Family heritage recipes"}]},
+            ]}},
+            {"query": {"pages": [
+                {"title": "Category:Southeast Asian recipes", "categories": [{"title": "Category:Recipes by origin"}]},
+                {"title": "Category:Family heritage recipes", "categories": [{"title": "Category:Recipes by origin"}]},
+            ]}},
+        ]
+        with patch.object(fw, "api_get", side_effect=responses) as api, patch.object(fw.time, "sleep"):
+            categories = fw.fetch_cuisine_categories(pages)
+        self.assertEqual(categories["thai recipes"], ["Family heritage", "Southeast Asian", "Thai"])
+        self.assertNotIn("main course recipes", categories)
+        self.assertEqual(api.call_args_list[1].args[0]["clcontinue"], "next")
+
+    def test_category_fetch_failure_preserves_recipes_and_invalidates_old_categories(self):
+        response = {"query": {"pages": [{
+            "pageid": 1, "title": "Cookbook:Test",
+            "revisions": [{"revid": 2, "timestamp": "2026-01-01", "slots": {"main": {"content": "test"}}}],
+        }]}}
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "cuisine_categories.json").write_text('{"stale": []}', encoding="utf-8")
+            with patch.object(fw, "OUT_DIR", root), patch.object(fw, "api_get", return_value=response), \
+                    patch.object(fw, "fetch_cuisine_categories", side_effect=RuntimeError("unavailable")):
+                with self.assertRaisesRegex(RuntimeError, "unavailable"):
+                    fw.fetch_all()
+            self.assertTrue((root / "wikibooks_recipes.jsonl").is_file())
+            self.assertTrue((root / "retrieval.json").is_file())
+            self.assertFalse((root / "cuisine_categories.json").exists())
+
+    def test_recipe_cuisines_use_real_category_links_not_comments_or_page_text(self):
+        text = (
+            "==Ingredients==\n* cumin\n* basil\n"
+            "[[Category:Thai_recipes|{{PAGENAME}}]]\n"
+            "[[:Category:Italian recipes]]\n"
+            "<!-- [[Category:Italian recipes]] -->\n"
+            "<nowiki>[[Category:Italian recipes]]</nowiki>\n"
+            "Thai and Italian food"
+        )
+        self.assertEqual(category_links(text), {"Thai recipes"})
+        page = {"pageid": 1, "title": "Cookbook:Example", "revid": 2, "content": text}
+        recipe = dp.parse_recipe(page, ALIASES, {"thai recipes": ["Asian", "Thai"], "italian recipes": ["Italian"]})
+        self.assertEqual(set(recipe["cuisine_sources"]), {"Asian", "Thai"})
+
+    def test_cuisine_counts_lift_and_examples_are_computed_from_eligible_members(self):
+        recipes = [
+            {"pageid": 1, "ingredients": {"basil", "cumin"},
+             "cuisine_sources": {"Thai": 5, "Asian": 1}, "blends": dp.Counter({"curry powder": 2})},
+            {"pageid": 2, "ingredients": {"basil"},
+             "cuisine_sources": {"Thai": 2}, "blends": dp.Counter()},
+            {"pageid": 3, "ingredients": set(),
+             "cuisine_sources": {"Thai": 3}, "blends": dp.Counter()},
+            {"pageid": 4, "ingredients": {"basil", "cumin"},
+             "cuisine_sources": {"Italian": 4}, "blends": dp.Counter()},
+        ]
+        sources = {r["pageid"]: r for r in recipes}
+        sources[5] = {**recipes[0], "pageid": 5}
+        result = dp.cuisine_statistics(recipes, {1: 0, 2: 1, 4: 2, 5: 3}, sources)
+        thai = result["Thai"]
+        self.assertEqual(thai["eligible_recipes"], 3)
+        self.assertEqual(thai["recipes_with_tracked_ingredients"], 2)
+        self.assertEqual(thai["counts"], {"basil": 2, "cumin": 1})
+        self.assertEqual(thai["pairs"][0]["shared"], 1)
+        self.assertEqual(thai["pairs"][0]["lift"], 1.5)
+        self.assertEqual(thai["pairs"][0]["examples"], [3])
+        self.assertEqual(thai["excluded_blends"], {"curry powder": 1})
+        self.assertEqual(result["Italian"]["pairs"][0]["examples"], [2])
+        self.assertEqual(result["Asian"]["eligible_recipes"], 1)
+
+    def test_duplicate_recipes_keep_all_source_cuisines(self):
+        recipes = [
+            {"pageid": 1, "title": "Stew", "ingredients": {"basil"}, "section_hash": "same",
+             "cuisine_sources": {"Asian": 1}},
+            {"pageid": 2, "title": "Other", "ingredients": {"basil"}, "section_hash": "same",
+             "cuisine_sources": {"Thai": 2}},
+            {"pageid": 3, "title": "Stew (Easy)", "ingredients": {"basil"}, "section_hash": "different",
+             "cuisine_sources": {"Indian": 3}},
+        ]
+        kept, removed = dp.deduplicate(recipes)
+        self.assertEqual(len(removed), 2)
+        self.assertEqual(kept[0]["cuisine_sources"], {"Asian": 1, "Thai": 2, "Indian": 3})
+
+    def test_build_keeps_cuisine_examples_linked_to_tagged_duplicates(self):
+        def page(pageid, title, ingredients, category):
+            return {"pageid": pageid, "title": "Cookbook:" + title, "revid": pageid,
+                    "content": "==Ingredients==\n" + ingredients + "\n[[Category:" + category + " recipes]]"}
+
+        pages = [
+            page(1, "Stew", "* basil\n* cumin\n* garlic", "Asian"),
+            page(2, "Stew (Thai)", "* basil\n* cumin\n* garlic", "Thai"),
+            page(3, "Thai soup", "* basil\n* sugar", "Thai"),
+            page(4, "Thai noodles", "* tofu\n* oil", "Thai"),
+            page(5, "Italian stew", "* 2 tsp basil\n* 2 tsp cumin", "Italian"),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            raw, retrieval, categories = root / "recipes.jsonl", root / "retrieval.json", root / "categories.json"
+            raw.write_text("\n".join(json.dumps(p) for p in pages), encoding="utf-8")
+            retrieval.write_text("{}", encoding="utf-8")
+            categories.write_text(json.dumps({
+                "asian recipes": ["Asian"], "thai recipes": ["Asian", "Thai"], "italian recipes": ["Italian"],
+            }), encoding="utf-8")
+            with patch.multiple(dp, RAW=raw, RETRIEVAL=retrieval, CUISINE_CATEGORIES=categories,
+                                OUT_JSON=root / "pairings.json", OUT_JS=root / "pairings.js", AUDIT=root / "audit.json"):
+                output = dp.build()
+            thai = output["cuisines"]["Thai"]
+            self.assertEqual(output["meta"]["eligible_recipes"], 4)
+            self.assertEqual(thai["eligible_recipes"], 3)
+            self.assertEqual(thai["pairs"][0]["lift"], 1.5)
+            self.assertEqual(thai["counts"]["garlic"], 1)
+            self.assertTrue(any({p["a"], p["b"]} == {"cumin", "garlic"} for p in thai["pairs"]))
+            self.assertEqual(output["recipes"][thai["pairs"][0]["examples"][0]]["t"], "Stew (Thai)")
+            self.assertEqual(json.loads((root / "pairings.json").read_text(encoding="utf-8")), output)
+
+    def test_cuisine_uses_the_tagged_duplicate_ingredient_matches(self):
+        first = {"pageid": 1, "title": "Cookbook:Dish", "revid": 1,
+                 "content": "==Ingredients==\n* [[Cookbook:Coriander|coriander]]\n* cumin\n"
+                            "[[Category:Asian recipes]]"}
+        second = {"pageid": 2, "title": "Cookbook:Thai Dish", "revid": 2,
+                  "content": "==Ingredients==\n* [[Cookbook:Cilantro|coriander]]\n* cumin\n"
+                             "[[Category:Thai recipes]]"}
+        categories = {"asian recipes": ["Asian"], "thai recipes": ["Thai"]}
+        parsed = [dp.parse_recipe(page, ALIASES, categories) for page in (first, second)]
+        kept, _ = dp.deduplicate(parsed)
+        self.assertEqual(len(kept), 1)
+        result = dp.cuisine_statistics(kept, {1: 0, 2: 1}, {r["pageid"]: r for r in parsed})
+        self.assertEqual(result["Thai"]["counts"], {"cilantro": 1, "cumin": 1})
+        self.assertEqual(result["Thai"]["pairs"][0]["examples"], [1])
+        self.assertEqual(result["Asian"]["counts"], {"cumin": 1})
+
+
 class StatisticsTests(unittest.TestCase):
     def test_build_includes_aromatics_and_valid_recipe_examples(self):
         pages = [
@@ -121,11 +278,12 @@ class StatisticsTests(unittest.TestCase):
         ]
         with TemporaryDirectory() as tmp:
             root = Path(tmp)
-            raw, retrieval = root / "recipes.jsonl", root / "retrieval.json"
+            raw, retrieval, categories = root / "recipes.jsonl", root / "retrieval.json", root / "categories.json"
             raw.write_text("\n".join(dp.json.dumps(p) for p in pages), encoding="utf-8")
             retrieval.write_text("{}", encoding="utf-8")
+            categories.write_text("{}", encoding="utf-8")
             out_json, out_js, audit = root / "pairings.json", root / "pairings.js", root / "audit.json"
-            with patch.multiple(dp, RAW=raw, RETRIEVAL=retrieval,
+            with patch.multiple(dp, RAW=raw, RETRIEVAL=retrieval, CUISINE_CATEGORIES=categories,
                                 OUT_JSON=out_json, OUT_JS=out_js, AUDIT=audit):
                 output = dp.build()
             self.assertEqual(dp.json.loads(out_json.read_text(encoding="utf-8")), output)
@@ -192,7 +350,7 @@ class StatisticsTests(unittest.TestCase):
     def test_deduplication_retains_different_aromatics(self):
         recipes = [
             dp.parse_recipe({"pageid": i, "revid": i, "title": title,
-                             "content": f"==Ingredients==\n* thyme\n* {allium}"}, ALIASES)
+                             "content": f"==Ingredients==\n* thyme\n* {allium}"}, ALIASES, {})
             for i, title, allium in (
                 (1, "Cookbook:Stew", "onion"),
                 (2, "Cookbook:Stew II", "shallots"),

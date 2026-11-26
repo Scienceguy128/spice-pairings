@@ -25,7 +25,30 @@
     return 1 + 9 * t;
   }
 
-  const api = { DEFAULT_MIN_SHARED, pairStatus, visibleEdges, isSparse, edgeWidth };
+  function cuisineData(data, name) {
+    if (!name) {
+      return {
+        eligible_recipes: data.meta.eligible_recipes,
+        nodes: data.nodes,
+        pairs: data.pairs,
+        excluded_blends: data.excluded_blends,
+      };
+    }
+    if (!Object.prototype.hasOwnProperty.call(data.cuisines, name)) {
+      throw new Error(`Unknown cuisine: ${name}`);
+    }
+    const cuisine = data.cuisines[name];
+    return {
+      ...cuisine,
+      nodes: data.nodes.map((node) => ({ ...node, count: cuisine.counts[node.id] || 0 })),
+    };
+  }
+
+  function cuisineDefaultMinShared(pairs) {
+    return visibleEdges(pairs, 2).length ? 2 : 1;
+  }
+
+  const api = { DEFAULT_MIN_SHARED, pairStatus, visibleEdges, isSparse, edgeWidth, cuisineData, cuisineDefaultMinShared };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.PairingFilters = api;
 })(this);
