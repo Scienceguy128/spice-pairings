@@ -1,0 +1,4 @@
+data/raw/
+fetch.log
+__pycache__/
+*.pyc
