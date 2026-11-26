@@ -1,4 +1,4 @@
-"""Build spice/herb pairing statistics from the cached Wikibooks corpus.
+"""Build spice/herb/aromatic pairing statistics from the cached Wikibooks corpus.
 
 Usage:
     python fetch_wikibooks.py   # once, downloads data/raw/*.jsonl
@@ -46,6 +46,10 @@ BARE_CORIANDER = re.compile(r"(?<![a-z])coriander(?![a-z])")
 CILANTRO_CONTEXT = re.compile(r"(?<![a-z])(?:fresh|chopped|handful|bunch|sprigs?|garnish|leaves|leaf|minced)(?![a-z])")
 SEED_CONTEXT = re.compile(r"(?<![a-z])(?:ground|seeds?|powder|teaspoons?|tsp|dried|whole|roasted)(?![a-z])")
 BARE_CLOVES = re.compile(r"(?<![a-z])cloves?(?![a-z])")
+GARLIC_CLOVES = re.compile(
+    r"(?<![a-z])(?:(?:whole\s+)?cloves?\s+(?:of\s+)?"
+    r"(?:(?:fresh|peeled|crushed|minced|chopped|black)\s+)*garlic|garlic\s+cloves?)(?![a-z])"
+)
 
 
 def bounded(pattern):
@@ -109,7 +113,7 @@ def match_line(raw, aliases):
     """
     text, targets = clean_line(raw)
     found, blends, ambiguous = [], [], []
-    work = " " + text + " "
+    work = " " + GARLIC_CLOVES.sub("garlic", text) + " "
     for rx in aliases["excludes"]:
         work = rx.sub(" ", work)
     for rid, patterns in aliases["rules"]:
@@ -131,7 +135,7 @@ def match_line(raw, aliases):
         work = BARE_CORIANDER.sub(" ", work)
 
     if BARE_CLOVES.search(work):
-        if "garlic" in work or "garlic" in targets:
+        if "garlic" in found or "garlic" in work or "garlic" in targets:
             pass  # garlic cloves
         else:
             found.append("cloves")
@@ -188,7 +192,7 @@ def base_title(title):
 
 
 def deduplicate(recipes):
-    """Drop exact duplicate ingredient sections, and same-base-title recipes with identical spice sets."""
+    """Drop exact duplicate ingredient sections, and same-base-title recipes with identical tracked sets."""
     kept, removed, seen_hash, seen_title = [], [], {}, {}
     for r in sorted(recipes, key=lambda r: r["pageid"]):
         if r["section_hash"] in seen_hash:
@@ -196,7 +200,7 @@ def deduplicate(recipes):
             continue
         key = (base_title(r["title"]), frozenset(r["ingredients"]))
         if r["ingredients"] and key in seen_title:
-            removed.append({"title": r["title"], "duplicate_of": seen_title[key], "reason": "same title and spice set"})
+            removed.append({"title": r["title"], "duplicate_of": seen_title[key], "reason": "same title and tracked ingredient set"})
             continue
         seen_hash[r["section_hash"]] = r["title"]
         seen_title[key] = r["title"]
@@ -312,7 +316,7 @@ if __name__ == "__main__":
     m = out["meta"]
     print(f"pages={m['pages_downloaded']} no_ingredient_list={m['pages_without_ingredient_list']} "
           f"duplicates={m['duplicates_removed']} eligible={m['eligible_recipes']} "
-          f"with_spices={m['recipes_with_tracked_ingredients']}")
+          f"with_tracked_ingredients={m['recipes_with_tracked_ingredients']}")
     print(f"observed pairs={m['observed_pairs']} supported positive pairs (>= {DEFAULT_MIN_SHARED})="
           f"{m['default_supported_positive_pairs']}")
     print("top ingredients:", ", ".join(f"{n['label']}={n['count']}" for n in out["nodes"][:12]))
