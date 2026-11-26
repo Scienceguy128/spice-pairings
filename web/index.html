@@ -36,11 +36,12 @@
   <h1>Spice &amp; herb pairing network</h1>
   <label>Find <input id="search" list="names" placeholder="e.g. Cumin" autocomplete="off"></label>
   <datalist id="names"></datalist>
+  <label>Cuisine <select id="cuisine"><option value="">All cuisines</option></select></label>
   <label title="Pairs seen together in fewer recipes are hidden">Min. shared recipes
     <input id="minShared" type="number" min="1" max="200" step="1"></label>
   <button id="relayout">Re-run layout</button>
   <button id="reset">Clear selection</button>
-  <span id="status" class="muted"></span>
+  <span id="status" class="muted" aria-live="polite"></span>
 </header>
 <div id="cy"></div>
 <aside id="panel"></aside>

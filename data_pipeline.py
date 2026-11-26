@@ -15,9 +15,12 @@ from itertools import combinations
 from pathlib import Path
 from urllib.parse import quote
 
+from cuisine_categories import category_key, category_links
+
 ROOT = Path(__file__).parent
 RAW = ROOT / "data" / "raw" / "wikibooks_recipes.jsonl"
 RETRIEVAL = ROOT / "data" / "raw" / "retrieval.json"
+CUISINE_CATEGORIES = ROOT / "data" / "raw" / "cuisine_categories.json"
 ALIASES = ROOT / "ingredient_aliases.json"
 OUT_JSON = ROOT / "web" / "data" / "pairings.json"
 OUT_JS = ROOT / "web" / "data" / "pairings.js"
@@ -151,7 +154,7 @@ def match_line(raw, aliases):
     return {"text": text, "found": found, "blends": blends, "ambiguous": ambiguous, "alternatives": alternatives}
 
 
-def parse_recipe(page, aliases):
+def parse_recipe(page, aliases, cuisine_categories):
     lines = ingredient_lines(page["content"])
     found, blends, ambiguous, alternatives, samples = set(), Counter(), [], [], []
     for raw in lines:
@@ -164,6 +167,10 @@ def parse_recipe(page, aliases):
             alternatives.append((result["alternatives"], result["text"]))
         samples.append((result["text"], result["found"]))
     title = page["title"].split(":", 1)[-1]
+    cuisines = {
+        cuisine for category in category_links(page["content"])
+        for cuisine in cuisine_categories.get(category_key(category), [])
+    }
     return {
         "pageid": page["pageid"],
         "title": title,
@@ -171,6 +178,7 @@ def parse_recipe(page, aliases):
         "url": "https://en.wikibooks.org/wiki/" + quote(page["title"].replace(" ", "_"), safe=":/()',"),
         "line_count": len(lines),
         "ingredients": found,
+        "cuisine_sources": {cuisine: page["pageid"] for cuisine in cuisines},
         "blends": blends,
         "ambiguous": ambiguous,
         "alternatives": alternatives,
@@ -191,16 +199,22 @@ def deduplicate(recipes):
     """Drop exact duplicate ingredient sections, and same-base-title recipes with identical spice sets."""
     kept, removed, seen_hash, seen_title = [], [], {}, {}
     for r in sorted(recipes, key=lambda r: r["pageid"]):
-        if r["section_hash"] in seen_hash:
-            removed.append({"title": r["title"], "duplicate_of": seen_hash[r["section_hash"]], "reason": "identical ingredients"})
-            continue
         key = (base_title(r["title"]), frozenset(r["ingredients"]))
-        if r["ingredients"] and key in seen_title:
-            removed.append({"title": r["title"], "duplicate_of": seen_title[key], "reason": "same title and spice set"})
+        if r["section_hash"] in seen_hash:
+            original = seen_hash[r["section_hash"]]
+            reason = "identical ingredients"
+        elif r["ingredients"] and key in seen_title:
+            original = seen_title[key]
+            reason = "same title and spice set"
+        else:
+            seen_hash[r["section_hash"]] = r
+            seen_title[key] = r
+            kept.append(r)
             continue
-        seen_hash[r["section_hash"]] = r["title"]
-        seen_title[key] = r["title"]
-        kept.append(r)
+
+        for cuisine, source in r.get("cuisine_sources", {}).items():
+            original.setdefault("cuisine_sources", {}).setdefault(cuisine, source)
+        removed.append({"title": r["title"], "duplicate_of": original["title"], "reason": reason})
     return kept, removed
 
 
@@ -242,16 +256,54 @@ def supported_edges(pairs, min_shared=DEFAULT_MIN_SHARED):
     return [p for p in pairs if p["shared"] >= min_shared and p["lift"] > 1]
 
 
+def cuisine_statistics(recipes, recipe_index, sources):
+    by_cuisine = defaultdict(list)
+    for recipe in recipes:
+        for cuisine, pageid in recipe["cuisine_sources"].items():
+            by_cuisine[cuisine].append(sources[pageid])
+
+    result = {}
+    for cuisine, members in sorted(by_cuisine.items()):
+        counts, pairs, total = compute_pairs([
+            (recipe_index[r["pageid"]] if r["ingredients"] else None, r["ingredients"])
+            for r in members
+        ])
+        blends = Counter()
+        for r in members:
+            blends.update(sorted(r["blends"]))
+        result[cuisine] = {
+            "eligible_recipes": total,
+            "recipes_with_tracked_ingredients": sum(bool(r["ingredients"]) for r in members),
+            "counts": dict(counts),
+            "pairs": pairs,
+            "excluded_blends": dict(blends.most_common()),
+        }
+    return result
+
+
 def build():
     aliases = load_aliases()
     pages = [json.loads(line) for line in RAW.read_text(encoding="utf-8").splitlines() if line.strip()]
     retrieval = json.loads(RETRIEVAL.read_text(encoding="utf-8"))
-    parsed = [parse_recipe(p, aliases) for p in pages]
+    if not CUISINE_CATEGORIES.is_file():
+        raise FileNotFoundError(
+            "Cuisine category cache is missing; run python fetch_wikibooks.py --categories-only to refresh it."
+        )
+    cuisine_categories = json.loads(CUISINE_CATEGORIES.read_text(encoding="utf-8"))
+    parsed = [parse_recipe(p, aliases, cuisine_categories) for p in pages]
     no_section = [r for r in parsed if r["line_count"] < MIN_INGREDIENT_LINES]
     eligible, duplicates = deduplicate([r for r in parsed if r["line_count"] >= MIN_INGREDIENT_LINES])
 
     used = [r for r in eligible if r["ingredients"]]
     recipe_index = {r["pageid"]: i for i, r in enumerate(used)}
+    example_recipes = [{"t": r["title"], "u": r["url"]} for r in used]
+    parsed_by_id = {r["pageid"]: r for r in parsed}
+    for r in eligible:
+        for pageid in sorted(set(r["cuisine_sources"].values())):
+            source = parsed_by_id[pageid]
+            if source["ingredients"] and pageid not in recipe_index:
+                recipe_index[pageid] = len(example_recipes)
+                example_recipes.append({"t": source["title"], "u": source["url"]})
     counts, pairs, total = compute_pairs([(recipe_index[r["pageid"]], r["ingredients"]) for r in eligible if r["ingredients"]] +
                                          [(None, set()) for r in eligible if not r["ingredients"]])
     meta_ing = aliases["ingredients"]
@@ -280,8 +332,9 @@ def build():
         },
         "nodes": nodes,
         "pairs": pairs,
-        "recipes": [{"t": r["title"], "u": r["url"]} for r in used],
+        "recipes": example_recipes,
         "excluded_blends": dict(blend_counts.most_common()),
+        "cuisines": cuisine_statistics(eligible, recipe_index, parsed_by_id),
     }
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(output, ensure_ascii=False, separators=(",", ":"))

@@ -7,7 +7,7 @@ An interactive network of how often spices and culinary herbs appear together in
 ## Quick start
 
 ```powershell
-python fetch_wikibooks.py      # download the Wikibooks Cookbook recipes (cached in data/raw/, git-ignored)
+python fetch_wikibooks.py      # download Wikibooks recipes and cuisine categories (cached in data/raw/, git-ignored)
 python data_pipeline.py        # parse, normalize, score -> web/data/pairings.json + .js, data/audit.json
 start web\index.html           # open in a browser (works from file://, no server needed)
 ```
@@ -23,7 +23,7 @@ node --test tests/
 
 ## How the score works
 
-For every pair of tracked ingredients, over **N** deduplicated recipes:
+For every pair of tracked ingredients, over **N** deduplicated recipes in the current selection:
 
 ```
 lift = (recipes with both × N) / (recipes with A × recipes with B)
@@ -38,7 +38,8 @@ Raw co-occurrence counts would mostly show that black pepper and parsley are com
 ### What the network shows
 
 - **Nodes**: one per spice or herb; size reflects the number of recipes containing it.
-- **Edges**: pairs with at least *k* shared recipes **and** lift > 1. Width is scaled log-lift. *k* defaults to **10** and can be changed in the header. Pairs with fewer than 10 shared recipes are drawn dashed (sparse evidence) when you lower *k*.
+- **Edges**: pairs with at least *k* shared recipes **and** lift > 1. Width is scaled log-lift. For all cuisines, *k* defaults to **10** and can be changed in the header. Pairs with fewer than 10 shared recipes are drawn dashed (sparse evidence).
+- **Cuisine** filters the network, counts, lift scores and examples to recipes in that Wikibooks origin category, including its subcategories. A recipe can belong to more than one cuisine; recipes without an origin category are excluded from cuisine views but remain in the all-cuisine view. Because cuisine samples are often small, the initial minimum is **2** shared recipes when that yields a positive pair, or **1** otherwise. A manually chosen minimum is retained when changing cuisines.
 - **Click an ingredient** to see its strongest supported partners, observed pairs that aren't drawn (below threshold or no positive association), and ingredients never seen with it.
 - **Click an edge or row** to see lift, counts, expected co-occurrence and links to example recipes.
 
@@ -46,7 +47,7 @@ Network positions are produced by a force layout and are not a taste distance.
 
 ## Data pipeline
 
-1. `fetch_wikibooks.py` uses the official MediaWiki API to download every page in `Category:Recipes` (the Cookbook namespace), with revision IDs and retrieval time. It backs off on rate limits.
+1. `fetch_wikibooks.py` uses the official MediaWiki API to download every page in `Category:Recipes` (the Cookbook namespace), with revision IDs and retrieval time. It also caches the ancestry of recipe-origin categories. It backs off on rate limits. For an older recipe cache, or if category retrieval fails, run `python fetch_wikibooks.py --categories-only` to refresh just the category data.
 2. `data_pipeline.py`:
    - extracts bullet lines under `Ingredients` headings (including subsections); pages with fewer than 2 such lines are skipped;
    - strips wiki markup and matches the rules in `ingredient_aliases.json` in order;
@@ -56,7 +57,8 @@ Network positions are produced by a force layout and are not a taste distance.
    - excludes lines that offer alternatives ("thyme or oregano") from pair evidence;
    - counts each ingredient once per recipe;
    - removes duplicate recipes (identical ingredient sections, or same base title with the same spice set);
-   - keeps recipes without any tracked spice in the denominator N.
+   - classifies recipes by their explicit Wikibooks recipe-origin categories and their origin ancestors; duplicate recipes retain all their cuisine categories;
+   - keeps recipes without any tracked spice in the denominator N, both overall and within each cuisine.
 3. `data/audit.json` lists ambiguous lines, excluded alternatives, removed duplicates and a random sample of 200 parsed lines for manual review.
 
 ## Current results (retrieved 2026-11-26)
@@ -72,6 +74,7 @@ Network positions are produced by a force layout and are not a taste distance.
 ## Limitations
 
 - One community-written corpus of a few thousand recipes; coverage skews toward cuisines Wikibooks contributors wrote about, and rare spices have little evidence.
+- Cuisine categories are incomplete and may overlap; small cuisine subsets and one-recipe pairings are especially uncertain. A cuisine filter reflects the source's categories, not an authoritative definition of that cuisine.
 - Co-occurrence reflects culinary convention, not chemistry or taste tests. Quantities, cooking method, dish type and three-way combinations are ignored.
 - Rule-based matching makes mistakes; see `data/audit.json`.
 - Missing edges mean insufficient evidence or no positive association in this corpus, not incompatibility.
