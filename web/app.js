@@ -24,6 +24,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const label = (id) => nodeById.get(id).label;
   const fmt = (x) => (x >= 10 ? x.toFixed(1) : x.toFixed(2));
+  const colors = { spice: "#d9822b", herb: "#3f9b4a", aromatic: "#8b5fc7" };
 
   cuisineInput.innerHTML += Object.keys(data.cuisines).sort((a, b) => a.localeCompare(b))
     .map((name) => `<option value="${esc(name)}">${esc(name)}</option>`).join("");
@@ -56,7 +57,7 @@
           "text-outline-color": "#fff", "text-outline-width": 2, color: "#1f2328",
           width: (n) => 14 + 46 * Math.sqrt(n.data("count") / maxCount),
           height: (n) => 14 + 46 * Math.sqrt(n.data("count") / maxCount),
-          "background-color": (n) => (n.data("type") === "herb" ? "#3f9b4a" : "#d9822b"),
+          "background-color": (n) => colors[n.data("type")],
           "border-width": 1, "border-color": "#fff" } },
       { selector: "node.isolated", style: { opacity: 0.35 } },
       { selector: "edge", style: {
@@ -123,7 +124,7 @@
     const row = ({ p, other }) => `<tr class="pair" data-a="${p.a}" data-b="${p.b}"><td>${esc(label(other))} ${statusTag(p)}</td>
       <td class="num">${fmt(p.lift)}</td><td class="num">${p.shared}</td></tr>`;
     panel.innerHTML = `
-      <h2><span class="swatch" style="background:${n.type === "herb" ? "var(--herb)" : "var(--spice)"}"></span> ${esc(n.label)}</h2>
+      <h2><span class="swatch" style="background:${colors[n.type]}"></span> ${esc(n.label)}</h2>
       <p class="muted">${n.type} · in ${n.count} of ${N} ${cuisine ? esc(cuisine) + " " : ""}recipes (${(100 * n.count / N).toFixed(1)}%)</p>
       <h3>Strongest supported pairings (${shown.length})</h3>
       ${shown.length ? `<table><tr><th>Partner</th><th class="num">Lift</th><th class="num">Shared</th></tr>${shown.map(row).join("")}</table>`
@@ -166,16 +167,17 @@
     const blends = Object.entries(current.excluded_blends).slice(0, 12);
     panel.innerHTML = `
       <h2>How to read this</h2>
-      ${cuisine ? `<p class="muted">Scores, counts and examples use ${N} recipes classified by Wikibooks as ${esc(cuisine)} or an included subcategory; ${current.recipes_with_tracked_ingredients} contain a tracked spice or herb.</p>` : ""}
+      ${cuisine ? `<p class="muted">Scores, counts and examples use ${N} recipes classified by Wikibooks as ${esc(cuisine)} or an included subcategory; ${current.recipes_with_tracked_ingredients} contain a tracked ingredient.</p>` : ""}
       <p><span class="swatch" style="background:var(--spice)"></span> spice &nbsp;
-         <span class="swatch" style="background:var(--herb)"></span> herb &nbsp; Node size = number of recipes.</p>
+         <span class="swatch" style="background:var(--herb)"></span> herb &nbsp;
+         <span class="swatch" style="background:var(--aromatic)"></span> aromatic &nbsp; Node size = number of recipes.</p>
       <p>An edge means the two appear together in at least <b>${minShared}</b> recipes <i>and</i> more often than their
          individual popularity predicts (<b>lift</b> &gt; 1). Thicker = higher lift (log scale).
          Dashed gold edges have fewer than 10 shared recipes (sparse evidence).</p>
       <p class="warn">This is <b>recipe-based pairing affinity</b> from one corpus, not a measured taste score. Missing edges mean
          too little evidence, not a bad pairing. Positions on the canvas come from the layout algorithm and are not
          taste distances.</p>
-      ${!covered.length ? '<p class="warn">No tracked spices or herbs were found in this selection.</p>' : ""}
+      ${!covered.length ? '<p class="warn">No tracked ingredients were found in this selection.</p>' : ""}
       <h3>Highest-lift pairings shown</h3>
       ${top.length ? `<table><tr><th>Pair</th><th class="num">Lift</th><th class="num">Shared</th></tr>
         ${top.map((p) => `<tr class="pair" data-a="${p.a}" data-b="${p.b}"><td>${esc(label(p.a))} + ${esc(label(p.b))} ${statusTag(p)}</td>
@@ -236,7 +238,7 @@
   document.getElementById("reset").onclick = () => { searchInput.value = ""; showOverview(); };
 
   document.getElementById("footer").innerHTML =
-    `${meta.eligible_recipes} recipes (${meta.recipes_with_tracked_ingredients} with a tracked spice/herb) from
+    `${meta.eligible_recipes} recipes (${meta.recipes_with_tracked_ingredients} with a tracked spice/herb/aromatic) from
      <a href="https://en.wikibooks.org/wiki/Cookbook:Table_of_Contents" target="_blank" rel="noopener">Wikibooks Cookbook</a>,
      retrieved ${esc(meta.retrieved_at.slice(0, 10))}. Recipe text © Wikibooks contributors,
      <a href="${esc(meta.license_url)}" target="_blank" rel="noopener">CC BY-SA 4.0</a>; derived statistics shared under the same license.`;

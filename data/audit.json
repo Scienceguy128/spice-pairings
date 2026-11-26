@@ -236,7 +236,7 @@
    "line": "1 drop coriander oil"
   }
  ],
- "alternative_lines_excluded": 110,
+ "alternative_lines_excluded": 143,
  "alternative_examples": [
   {
    "title": "English Field Bean Pate",
@@ -254,6 +254,22 @@
     "red_pepper_flakes"
    ],
    "line": "2 chopped jalapeño or 2 tablespoons of crushed red pepper or 1 tablespoon of cayenne pepper"
+  },
+  {
+   "title": "Salsa (recipe)",
+   "ids": [
+    "garlic",
+    "black_pepper"
+   ],
+   "line": "1 pinch of pepper and/or garlic to taste (optional)"
+  },
+  {
+   "title": "Zupa Ogórkowa (Polish Cucumber Soup)",
+   "ids": [
+    "onion",
+    "leek"
+   ],
+   "line": "1 small leek (or 1 small onion)"
   },
   {
    "title": "Kashmiri Pulao",
@@ -283,11 +299,21 @@
    "title": "Hamburger",
    "ids": [
     "black_pepper",
+    "garlic",
+    "onion",
     "basil",
     "parsley",
     "oregano"
    ],
    "line": "optional additions to burger patties prior to cooking include: black pepper, chili, worcestershire sauce, soy sauce, basil, oregano and parsley, minced garlic or garlic powder, onion flakes or diced onion, mustard, olive oil, cheese, butter, hot sauce, kosher salt, bread crumbs, and crushed crackers."
+  },
+  {
+   "title": "Shopska Salata (Tomato, Cucumber, and Bell Pepper Salad)",
+   "ids": [
+    "scallion",
+    "onion"
+   ],
+   "line": "2 spoonfuls chopped red onion or green onion"
   },
   {
    "title": "Sirene po Shopski (Bulgarian Cheese and Tomatoes)",
@@ -306,8 +332,25 @@
    "line": "paprika or cayenne pepper, as a garnish"
   },
   {
+   "title": "Buttermilk Fried Chicken with Pan Gravy",
+   "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "1 small onion (or shallots), chopped"
+  },
+  {
+   "title": "Colcannon",
+   "ids": [
+    "scallion",
+    "leek"
+   ],
+   "line": "2 small leeks or 1 bunch of spring onion tops, chopped"
+  },
+  {
    "title": "Taco Meat",
    "ids": [
+    "garlic",
     "cumin",
     "oregano"
    ],
@@ -322,6 +365,14 @@
    "line": "1 tsp basil or black pepper"
   },
   {
+   "title": "Chicken Alfredo",
+   "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "1⁄4 cup chopped onion or shallot"
+  },
+  {
    "title": "Boilo (Hot Spiced Citrus Whiskey)",
    "ids": [
     "anise",
@@ -331,6 +382,46 @@
     "cloves"
    ],
    "line": "1⁄2–1 teaspoon each of any or all of these spices: cinnamon, nutmeg, cloves, caraway seed, aniseed"
+  },
+  {
+   "title": "Cantonese Roast Duck",
+   "ids": [
+    "scallion",
+    "onion"
+   ],
+   "line": "3 green onions or 1 onion"
+  },
+  {
+   "title": "Curry and Honey Chicken",
+   "ids": [
+    "celery",
+    "parsley"
+   ],
+   "line": "chopped parsley or celery leaves (optional)"
+  },
+  {
+   "title": "Curry and Honey Chicken",
+   "ids": [
+    "onion",
+    "leek"
+   ],
+   "line": "1 onion or leek"
+  },
+  {
+   "title": "Mexican Tomato Soup",
+   "ids": [
+    "onion",
+    "leek"
+   ],
+   "line": "onion or leek greens"
+  },
+  {
+   "title": "Potage Parmentier",
+   "ids": [
+    "onion",
+    "leek"
+   ],
+   "line": "3–4 cups (~1 lb / 450 g) sliced leeks or onions"
   },
   {
    "title": "Huevos Rancheros",
@@ -349,6 +440,14 @@
    "line": "1 cup chopped fresh cilantro or parsley"
   },
   {
+   "title": "Kari Ayam (Indonesian Chicken Curry)",
+   "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "5 asian shallots, sliced (or 1⁄2 cup chopped onions)"
+  },
+  {
    "title": "Bean Chili",
    "ids": [
     "basil",
@@ -356,6 +455,14 @@
     "thyme"
    ],
    "line": "1 tsp thyme, basil, oregano, or other spice"
+  },
+  {
+   "title": "Wilted Greens",
+   "ids": [
+    "shallot",
+    "garlic"
+   ],
+   "line": "1 tbsp chopped garlic or shallots"
   },
   {
    "title": "Bean and Rice Bake",
@@ -385,6 +492,14 @@
   {
    "title": "Kedgeree (Rice and Smoked Fish)",
    "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "3 medium shallots or 1 medium onion, chopped fairly fine"
+  },
+  {
+   "title": "Kedgeree (Rice and Smoked Fish)",
+   "ids": [
     "cilantro",
     "parsley"
    ],
@@ -397,6 +512,30 @@
     "dill"
    ],
    "line": "chopped dill or parsley for garnish"
+  },
+  {
+   "title": "Quorn Pitta",
+   "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "2 shallots or 1 large onion, minced"
+  },
+  {
+   "title": "Mock Béarnaise Sauce",
+   "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "1 shallot or small onion, very finely minced or 1⁄4 tsp onion powder"
+  },
+  {
+   "title": "Fish Stock (Fumet de poisson)",
+   "ids": [
+    "scallion",
+    "leek"
+   ],
+   "line": "1⁄3 cup leeks or green onions including green part, sliced and thoroughly washed"
   },
   {
    "title": "Corom Chatni (Mango Chutney with Hot Chillies)",
@@ -413,6 +552,14 @@
     "mint"
    ],
    "line": "1 tsp cilantro or mint, chopped"
+  },
+  {
+   "title": "Vichyssoise (Chilled Potato Leek Soup)",
+   "ids": [
+    "scallion",
+    "shallot"
+   ],
+   "line": "1 bunch diced shallots (white bases only) or green onions"
   },
   {
    "title": "Lemon Cream Sauce",
@@ -449,6 +596,7 @@
   {
    "title": "Stovies",
    "ids": [
+    "scallion",
     "parsley",
     "chives"
    ],
@@ -489,10 +637,26 @@
   {
    "title": "Duxelles (Minced Mushrooms with Herbs)",
    "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "1 small onion or 1–2 shallots, minced"
+  },
+  {
+   "title": "Duxelles (Minced Mushrooms with Herbs)",
+   "ids": [
     "tarragon",
     "thyme"
    ],
    "line": "1 pinch tarragon or thyme (optional)"
+  },
+  {
+   "title": "Vegetable Spring Roll",
+   "ids": [
+    "onion",
+    "leek"
+   ],
+   "line": "1 cup chopped leeks or onion (optional)"
   },
   {
    "title": "Roast Butternut, Biltong and Brown Rice Salad",
@@ -505,6 +669,7 @@
   {
    "title": "Mango and Yellow Split Pea Curry",
    "ids": [
+    "galangal",
     "ginger",
     "cloves"
    ],
@@ -527,6 +692,14 @@
    "line": "1 tablespoon chopped parsley or basil"
   },
   {
+   "title": "Kyselo (Czech Sourdough Mushroom Soup)",
+   "ids": [
+    "scallion",
+    "parsley"
+   ],
+   "line": "chopped green herbs, such as parsley or scallion"
+  },
+  {
    "title": "South Texan Pinto Beans",
    "ids": [
     "paprika",
@@ -535,12 +708,45 @@
    "line": "1 1⁄2 tbsp paprika or 1⁄2 tsp each of paprika and pepper"
   },
   {
+   "title": "Tuna Salad (1940)",
+   "ids": [
+    "scallion",
+    "onion"
+   ],
+   "line": "1⁄2 ea. chopped green onion or 1⁄2 tsp dried chopped white or yellow onion"
+  },
+  {
+   "title": "Béchamel Sauce (Louisiannaise)",
+   "ids": [
+    "garlic",
+    "onion"
+   ],
+   "line": "1⁄4 ea. onion or 2 garlic cloves"
+  },
+  {
    "title": "Spaghetti a la Monegasque",
    "ids": [
     "basil",
     "tarragon"
    ],
    "line": "3 sprigs fresh tarragon or basil (or 1 tsp dried)"
+  },
+  {
+   "title": "Seaweed Salad",
+   "ids": [
+    "scallion",
+    "shallot",
+    "onion"
+   ],
+   "line": "1⁄4 cup minced shallot, scallion or red onion"
+  },
+  {
+   "title": "Jamaican Rice and Peas",
+   "ids": [
+    "scallion",
+    "onion"
+   ],
+   "line": "1 bunch scallions or 1 small white onion, chopped"
   },
   {
    "title": "Egg with Cabbage and Turkish Sausage",
@@ -583,6 +789,14 @@
    "line": "fresh parsley and/or dill"
   },
   {
+   "title": "Béchamel Sauce (Beeton)",
+   "ids": [
+    "shallot",
+    "onion"
+   ],
+   "line": "1 small onion or shallot"
+  },
+  {
    "title": "Yemenite Charoset I",
    "ids": [
     "marjoram",
@@ -591,12 +805,28 @@
    "line": "20 g dried marjoram or oregano, partially crushed"
   },
   {
+   "title": "Dirty Desert Fried Eggs",
+   "ids": [
+    "garlic",
+    "onion"
+   ],
+   "line": "onion powder or garlic powder"
+  },
+  {
    "title": "Meringata di Frutta in Coppa (Meringue with Fruit and Cream)",
    "ids": [
     "basil",
     "mint"
    ],
    "line": "fresh mint or basil"
+  },
+  {
+   "title": "Tibetan Meat Momos",
+   "ids": [
+    "scallion",
+    "shallot"
+   ],
+   "line": "1⁄2 cup finely-chopped shallots or spring onions"
   },
   {
    "title": "Benechin Kunkujang (Gambian Seasoned Rice and Lamb)",
@@ -821,297 +1051,68 @@
     "parsley"
    ],
    "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Kik Alicha (Yellow Split Pea Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Genfo (Ethiopian Porridge)",
-   "ids": [
-    "nigella",
-    "cinnamon"
-   ],
-   "line": "fresh nigella seeds or cinnamon (optional, for garnish)"
-  },
-  {
-   "title": "Fasolia (Ethiopian Green Bean Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Yataklete Kilkil (Ethiopian Vegetable Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Doro Dabo (Ethiopian Chicken with Spiced Bread)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Diri Na Njar (Chadian Spiced Rice with Vegetables)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, for garnish (optional)"
-  },
-  {
-   "title": "Nigerian Egg Pepper Soup",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, for garnish (optional)"
-  },
-  {
-   "title": "Yetsom Shiro (Ethiopian Vegan Chickpea Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Hamli (Ethiopian Spinach Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Yetakelt Wot (Ethiopian Spiced Vegetable Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Gored Gored (Ethiopian Raw Beef)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh parsley or cilantro, chopped, for garnish"
-  },
-  {
-   "title": "Yetakelt Alicha (Ethiopian Vegetable Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Inguday Tibs (Ethiopian Mushroom Stir-Fry)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh parsley or cilantro, chopped, for garnish"
-  },
-  {
-   "title": "Dorowot Fitfit (Ethiopian Chicken Stew Salad)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "1⁄4 cup chopped fresh parsley or cilantro, for garnish"
-  },
-  {
-   "title": "Tegabino Shiro (Ethiopian Spiced Chickpea Dip)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh parsley or cilantro, chopped, for garnish"
-  },
-  {
-   "title": "Doro Fitfit (Ethiopian Chicken Salad)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped, for garnish"
-  },
-  {
-   "title": "Chadian Salad",
-   "ids": [
-    "parsley",
-    "mint"
-   ],
-   "line": "fresh parsley or mint leaves, chopped (optional, for garnish)"
-  },
-  {
-   "title": "Tchakpolo (Togolese Meat and Vegetable Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh parsley or cilantro, chopped (for garnish)"
-  },
-  {
-   "title": "Boule-Di (Senegalese Fish and Rice)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "chopped fresh parsley or cilantro (for garnish)"
-  },
-  {
-   "title": "Maffé (West African Peanut Stew) I",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped (for garnish)"
-  },
-  {
-   "title": "Asida (Sudanese Porridge)",
-   "ids": [
-    "cardamom",
-    "cinnamon"
-   ],
-   "line": "ground cinnamon or cardamom (optional)"
-  },
-  {
-   "title": "Kanda (Peanut Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh parsley or cilantro for garnish (optional)"
-  },
-  {
-   "title": "M'batata (Sweet Potato And Peanut Soup)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "chopped fresh cilantro or parsley for garnish (optional)"
-  },
-  {
-   "title": "Sauce Gombo (Okra Stew)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped (for garnish)"
-  },
-  {
-   "title": "N'gakasse (Groundnut Sauce)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "chopped fresh cilantro or parsley (optional; for garnish)"
-  },
-  {
-   "title": "Ibirayi n'Ibishyimbo (Rwandan Bean Soup with Fish)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh parsley or cilantro, for garnish"
-  },
-  {
-   "title": "Ibihaza n'Ubwoko (Rwandan Beans with Mushroom)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, for garnish"
-  },
-  {
-   "title": "Ibijumba n'Ubwoko (Rwandan Sweet Potato and Mushroom Dish)",
-   "ids": [
-    "cilantro",
-    "parsley"
-   ],
-   "line": "fresh cilantro or parsley, chopped (for garnish)"
   }
  ],
  "duplicates_removed": [
   {
    "title": "Easy Scrambled Eggs",
    "duplicate_of": "Basic Scrambled Eggs",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Oven Pancakes (Vegan)",
    "duplicate_of": "Oven Pancakes",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
+  },
+  {
+   "title": "Easy Nachos",
+   "duplicate_of": "Nachos",
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Sachertorte (Duramecho Version)",
    "duplicate_of": "Sachertorte",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Meatloaf III",
    "duplicate_of": "Meatloaf II",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Oatmeal Chocolate Chip Cookies II",
    "duplicate_of": "Oatmeal Chocolate Chip Cookies III",
-   "reason": "same title and spice set"
-  },
-  {
-   "title": "Fried Rice (Vegetarian)",
-   "duplicate_of": "Fried Rice",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Chocolate Chip Cookies II",
    "duplicate_of": "Chocolate Chip Cookies (Gluten-Free)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Chocolate Chip Cookies III",
    "duplicate_of": "Chocolate Chip Cookies (Gluten-Free)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Lemon Meringue Pie (Vegan)",
    "duplicate_of": "Lemon Meringue Pie (American)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Snickerdoodles (Idaho Daily Statesman)",
    "duplicate_of": "Snickerdoodles (Boston Globe)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Snickerdoodles II",
    "duplicate_of": "Snickerdoodles (Boston Globe)",
-   "reason": "same title and spice set"
-  },
-  {
-   "title": "Béchamel Sauce (Basic)",
-   "duplicate_of": "Béchamel Sauce (Louisiannaise)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Peanut Butter Cookies (Egg-Free)",
    "duplicate_of": "Peanut Butter Cookies",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "French Fries (Belgian)",
@@ -1121,17 +1122,17 @@
   {
    "title": "Fried Eggs (Olive Oil-basted)",
    "duplicate_of": "Fried Eggs",
-   "reason": "same title and spice set"
-  },
-  {
-   "title": "Guacamole III",
-   "duplicate_of": "Guacamole (Chile-Free)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Vanilla Ice Cream (Custard-Based)",
    "duplicate_of": "Vanilla Ice Cream (Egg-Free)",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
+  },
+  {
+   "title": "Miso Soup (Traditional)",
+   "duplicate_of": "Miso Soup",
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Tuwo Alabo (Nigerian Cassava Swallow)",
@@ -1141,7 +1142,7 @@
   {
    "title": "Simple Chocolate Fudge",
    "duplicate_of": "Chocolate Fudge",
-   "reason": "same title and spice set"
+   "reason": "same title and tracked ingredient set"
   },
   {
    "title": "Lemon Popsicle",
@@ -1265,11 +1266,9 @@
  ],
  "review_sample": [
   {
-   "title": "Tuna Curry",
-   "line": "pepper to taste",
-   "matched": [
-    "black_pepper"
-   ]
+   "title": "Tagliatelle Bake",
+   "line": "salt",
+   "matched": []
   },
   {
    "title": "Mushy Peas",
@@ -1282,16 +1281,14 @@
    "matched": []
   },
   {
-   "title": "Okpa (Boiled Bambara Bean Pudding)",
-   "line": "1.2 l lukewarm water",
+   "title": "Nigerian Egg Roll",
+   "line": "1 large egg",
    "matched": []
   },
   {
    "title": "Eggnog",
-   "line": "1 ml ground (1⁄4 teaspoon) nutmeg",
-   "matched": [
-    "nutmeg"
-   ]
+   "line": "480 ml (2 cups) milk, cold",
+   "matched": []
   },
   {
    "title": "Yoda Soda",
@@ -1309,9 +1306,11 @@
    "matched": []
   },
   {
-   "title": "Iguana Pozole",
-   "line": "5 cups freshly-bleached hominy",
-   "matched": []
+   "title": "Spiced Oysters",
+   "line": "mace, to taste",
+   "matched": [
+    "mace"
+   ]
   },
   {
    "title": "Sponge Cake II",
@@ -1320,24 +1319,22 @@
   },
   {
    "title": "Fish Biryani",
-   "line": "4 whole green chillies",
+   "line": "1 kg fish filets",
    "matched": []
   },
   {
-   "title": "Ugba Stew",
-   "line": "2–3 dried stockfish or panla pieces",
+   "title": "Garden Egg Stew",
+   "line": "dried shrimp (optional)",
    "matched": []
   },
   {
-   "title": "Muceere (Ugandan Pumpkin Stew)",
-   "line": "1 teaspoon ground coriander",
-   "matched": [
-    "coriander_seed"
-   ]
+   "title": "Kabalagala (Ugandan Pancakes)",
+   "line": "vegetable oil, for deep-frying",
+   "matched": []
   },
   {
-   "title": "Texas Style Chicken Fried Steak",
-   "line": "3 tbsp bacon drippings, divided",
+   "title": "Prime Rib Dinner",
+   "line": "1 tbsp unsalted butter",
    "matched": []
   },
   {
@@ -1346,13 +1343,13 @@
    "matched": []
   },
   {
-   "title": "Brioche Stuffing",
-   "line": "1⁄4 cup dried apples, coarsely chopped",
+   "title": "Blackened Sirloin",
+   "line": "1 tsp salt",
    "matched": []
   },
   {
    "title": "Rum Truffles",
-   "line": "8 oz semi-sweet chocolate",
+   "line": "3 tbsp rum",
    "matched": []
   },
   {
@@ -1363,7 +1360,9 @@
   {
    "title": "Keralan Vegetable Stew",
    "line": "1 onion, diced",
-   "matched": []
+   "matched": [
+    "onion"
+   ]
   },
   {
    "title": "Spaghetti Sauce",
@@ -1373,7 +1372,9 @@
   {
    "title": "Hallaca (Venezuelan Stuffed Corn Dough)",
    "line": "2 red onions, sliced",
-   "matched": []
+   "matched": [
+    "onion"
+   ]
   },
   {
    "title": "Bibimbap",
@@ -1381,16 +1382,16 @@
    "matched": []
   },
   {
-   "title": "Cheesy Mascarpone Cornbread Stuffing",
-   "line": "4 egg yolks, beaten",
-   "matched": []
+   "title": "Pork Roast with Cayenne Apple Glaze",
+   "line": "1 tbsp cayenne pepper",
+   "matched": [
+    "cayenne"
+   ]
   },
   {
-   "title": "Dynamite Shrimp",
-   "line": "3 tbsp freshly-ground black pepper",
-   "matched": [
-    "black_pepper"
-   ]
+   "title": "Cajun Burger",
+   "line": "4 slices pepper jack cheese",
+   "matched": []
   },
   {
    "title": "Vegetable Stew and Dumplings",
@@ -1399,7 +1400,7 @@
   },
   {
    "title": "Hickory Smoked Chicken Breasts",
-   "line": "several pounds of large hickory chunks",
+   "line": "3⁄4 cup plus 2 tbsp honey",
    "matched": []
   },
   {
@@ -1410,31 +1411,29 @@
    ]
   },
   {
-   "title": "Lahoh (Spongy Flatbread) I",
-   "line": "21⁄2 cups lukewarm water, divided",
+   "title": "Malawach (Flaky Flatbread)",
+   "line": "1 tbsp salt",
    "matched": []
   },
   {
    "title": "Eel Chowder",
-   "line": "1⁄2 cup celery, diced",
+   "line": "2 carrots, peeled and diced",
    "matched": []
   },
   {
-   "title": "Egg with Cabbage and Turkish Sausage",
-   "line": "1 tbsp red pepper paste (like korean gochujang or similar)",
+   "title": "Turkish Dolma Pilav",
+   "line": "pine nuts",
    "matched": []
   },
   {
    "title": "Prime Rib Dinner",
-   "line": "1 tbsp hazelnut oil",
+   "line": "olive oil",
    "matched": []
   },
   {
-   "title": "Kedgeree (Rice and Smoked Fish)",
-   "line": "fresh-ground pepper",
-   "matched": [
-    "black_pepper"
-   ]
+   "title": "Kid-Friendly Pizza",
+   "line": "1 pre-baked whole-grain pizza shell",
+   "matched": []
   },
   {
    "title": "Monkey Butter",
@@ -1443,29 +1442,29 @@
   },
   {
    "title": "Fish Stock (Fumet de poisson)",
-   "line": "1 cup coarsely-chopped onions",
-   "matched": []
+   "line": "2 sprigs fresh thyme, or 1⁄2 tsp dried",
+   "matched": [
+    "thyme"
+   ]
   },
   {
-   "title": "Texas Brisket Sandwiches",
-   "line": "3⁄4 cup yellow mustard, divided",
+   "title": "Mesquite BBQ Burger",
+   "line": "2 tsp yellow mustard",
    "matched": []
   },
   {
    "title": "Bubur Candil (Sweet Glutinous Rice Balls in Coconut Sauce)",
-   "line": "225 g glutinous rice flour",
+   "line": "750 ml water",
    "matched": []
   },
   {
-   "title": "Sukuma Wiki (East African Greens)",
-   "line": "1 tablespoon smoked paprika (optional)",
-   "matched": [
-    "paprika"
-   ]
+   "title": "Chapati Za Maji (Tanzanian Pancakes)",
+   "line": "2 eggs",
+   "matched": []
   },
   {
    "title": "Fumbua (Wild Spinach Stew)",
-   "line": "peanut butter",
+   "line": "3 pieces smoked catfish",
    "matched": []
   },
   {
@@ -1476,40 +1475,42 @@
    ]
   },
   {
-   "title": "Nigerian Wheatbread Toast",
-   "line": "salt",
+   "title": "Thai Peanut Fried Rice",
+   "line": "2 tsp peanut butter",
    "matched": []
   },
   {
-   "title": "Tibetan Meat Momos",
-   "line": "1 teaspoon ginger paste",
-   "matched": [
-    "ginger"
-   ]
+   "title": "Banana Milkshake",
+   "line": "1 large or 2 small bananas",
+   "matched": []
   },
   {
    "title": "Tofu Scramble I",
    "line": "1⁄2 small onion, diced",
+   "matched": [
+    "onion"
+   ]
+  },
+  {
+   "title": "Raspberry Almond Shortbread Bars",
+   "line": "1 tsp vanilla extract",
+   "matched": [
+    "vanilla"
+   ]
+  },
+  {
+   "title": "Rhubarb Fool",
+   "line": "500 g fresh or frozen rhubarb",
    "matched": []
   },
   {
-   "title": "Blackberry Oat Bars (Gluten-Free)",
-   "line": "1⁄4 cup honey",
+   "title": "Penne with Hearty Meat Sauce",
+   "line": "1 can (6 ounces) tomato paste",
    "matched": []
   },
   {
-   "title": "Meatballs (Vegetarian)",
-   "line": "2 eggs",
-   "matched": []
-  },
-  {
-   "title": "Banana Cream-Crunch Pie",
-   "line": "1 ea. 6 oz chocolate graham cracker pie crust",
-   "matched": []
-  },
-  {
-   "title": "Malai Mixed Vegetable Curry",
-   "line": "1 tbsp sour cream",
+   "title": "Hazelnut Torte",
+   "line": "200 g (7 oz) hazelnut meal",
    "matched": []
   },
   {
@@ -1523,20 +1524,18 @@
    "matched": []
   },
   {
-   "title": "Spinach Mushroom Omelet",
-   "line": "1 pinch ground nutmeg (optional)",
-   "matched": [
-    "nutmeg"
-   ]
+   "title": "Steak and Wine Pie",
+   "line": "1⁄3 whole carrot, sliced 1⁄8 inch thick, then cut into semicircles",
+   "matched": []
   },
   {
-   "title": "Almond Meringue",
-   "line": "4 oz (120 g) almond meal",
+   "title": "Marly Sponge",
+   "line": "5 oz (150 g) superfine sugar",
    "matched": []
   },
   {
    "title": "Milk Chocolate Pepper Vodka Tart",
-   "line": "1 egg",
+   "line": "10 ounces milk chocolate, cut into pieces",
    "matched": []
   },
   {
@@ -1551,8 +1550,10 @@
   },
   {
    "title": "Turkey with Plantain Stuffing (Pavo Relleno de Mofongo)",
-   "line": "1⁄4 cup red wine vinegar",
-   "matched": []
+   "line": "1 tbsp of ground pepper",
+   "matched": [
+    "black_pepper"
+   ]
   },
   {
    "title": "White Fish Ceviche (Cebiche de Pescado)",
@@ -1560,36 +1561,36 @@
    "matched": []
   },
   {
-   "title": "Peas Supreme",
-   "line": "1⁄4 cup bread crumbs (optional)",
+   "title": "Pork Pot Pie",
+   "line": "1⁄3 cup all-purpose flour",
    "matched": []
   },
   {
    "title": "Sharba Libya (Libyan Soup)",
-   "line": "1 teaspoon ground cumin",
-   "matched": [
-    "cumin"
-   ]
+   "line": "2 medium carrots, peeled and diced",
+   "matched": []
   },
   {
    "title": "Gingerbread Pancakes I",
-   "line": "1⁄4 teaspoon baking soda",
+   "line": "3⁄4 cup buttermilk",
    "matched": []
   },
   {
-   "title": "Welsh Cakes",
-   "line": "pinch of salt",
+   "title": "New York City–Style Pizza",
+   "line": "1⁄2 cup grated romano cheese",
    "matched": []
   },
   {
-   "title": "Corn and Kelp Chowder",
-   "line": "1 tablespoon butter",
+   "title": "Tvorog (Russian Farmer Cheese)",
+   "line": "2 parts milk",
    "matched": []
   },
   {
-   "title": "Mince Pie Tartlets with Pork",
-   "line": "2 packets shortcrust pastry dough",
-   "matched": []
+   "title": "Classic Mince Pies",
+   "line": "nutmeg",
+   "matched": [
+    "nutmeg"
+   ]
   },
   {
    "title": "Fruit Whip",
@@ -1598,17 +1599,19 @@
   },
   {
    "title": "Koesisters with Coconut",
-   "line": "1 cup sugar",
+   "line": "1 teaspoon ground cardamom",
+   "matched": [
+    "cardamom"
+   ]
+  },
+  {
+   "title": "Lemon Mille-feuille",
+   "line": "375 g (12 oz) ready-made puff pastry",
    "matched": []
   },
   {
-   "title": "Crème Anglaise",
-   "line": "11⁄3 cups (315 ml) milk",
-   "matched": []
-  },
-  {
-   "title": "Homemade Pancake Mix",
-   "line": "additional butter as needed for cooking",
+   "title": "Stuffed Grilled Chicken Breasts",
+   "line": "11⁄2 cups poultry stuffing (prepared to a somewhat wet and pipeable state)",
    "matched": []
   },
   {
@@ -1617,18 +1620,20 @@
    "matched": []
   },
   {
-   "title": "Egusi soup",
-   "line": "3 seasoning cubes",
+   "title": "Mmong ikong (water leaf soup)",
+   "line": "2 seasoning cubes",
    "matched": []
   },
   {
-   "title": "Chili Powder I",
-   "line": "2 tbsp garlic powder",
-   "matched": []
+   "title": "Panamanian Ropa Vieja",
+   "line": "yellow or white onion, chopped",
+   "matched": [
+    "onion"
+   ]
   },
   {
    "title": "Pizza Vanegas",
-   "line": "3 tbsp active dry yeast",
+   "line": "pepperoni",
    "matched": []
   },
   {
@@ -1639,54 +1644,54 @@
    ]
   },
   {
-   "title": "Char-Grilled Strip Steak",
-   "line": "1 1⁄2 tsp dried rosemary",
+   "title": "Pan-Seared Filet Mignon",
+   "line": "1 cup cognac",
+   "matched": []
+  },
+  {
+   "title": "Fruit Crumble",
+   "line": "spoonful sugar",
+   "matched": []
+  },
+  {
+   "title": "Egyptian Stuffed Eggplant (Mahshi Betinjan)",
+   "line": "1⁄4 cup fresh dill, finely chopped",
    "matched": [
-    "rosemary"
+    "dill"
    ]
   },
   {
-   "title": "Browned Rice",
-   "line": "1 small onion, chopped",
-   "matched": []
-  },
-  {
-   "title": "Kwacoco (Cameroonian Steamed Taro Bundles)",
-   "line": "1⁄2 cup crayfish",
-   "matched": []
-  },
-  {
-   "title": "Piñon (Spanish Stovetop Pot Pie)",
-   "line": "6 cloves garlic",
-   "matched": []
+   "title": "Estofado de Pollo (Chicken Stew)",
+   "line": "pepper to taste",
+   "matched": [
+    "black_pepper"
+   ]
   },
   {
    "title": "Tonkotsu Ramen",
-   "line": "5 grams powdered kansui (see notes)",
+   "line": "1⁄2 cup water",
    "matched": []
   },
   {
-   "title": "Zambian Fish Stew",
-   "line": "1 teaspoon ground cayenne pepper",
+   "title": "Chikanda (Zambian Orchid Sausage)",
+   "line": "1 teaspoon ground cumin",
    "matched": [
-    "cayenne"
+    "cumin"
    ]
   },
   {
-   "title": "Atkilt Wat (Ethiopian Cabbage and Potato Stew)",
-   "line": "1 tablespoon grated ginger",
-   "matched": [
-    "ginger"
-   ]
+   "title": "Strawberry Milkshake",
+   "line": "whipped cream or whipped topping",
+   "matched": []
   },
   {
    "title": "Switchel (Ginger Water)",
-   "line": "1 quart (1 liter) water",
+   "line": "1 gallon (about 3.75 liters) water",
    "matched": []
   },
   {
-   "title": "Chipotle Dip",
-   "line": "1⁄4 cup mayonnaise",
+   "title": "Coleslaw II",
+   "line": "1⁄4 head napa cabbage, shredded",
    "matched": []
   },
   {
@@ -1697,8 +1702,8 @@
    ]
   },
   {
-   "title": "Sweet Potatoes Sautéed with Honey",
-   "line": "1⁄2 tbsp (7.15 g) unsalted butter",
+   "title": "Taco Salad",
+   "line": "1⁄4 lb cheddar cheese, grated",
    "matched": []
   },
   {
@@ -1712,11 +1717,9 @@
    "matched": []
   },
   {
-   "title": "Coquitos (Coconut Macaroons)",
-   "line": "1 tsp vanilla extract",
-   "matched": [
-    "vanilla"
-   ]
+   "title": "Spinach Pie (Pascualina)",
+   "line": "egg wash",
+   "matched": []
   },
   {
    "title": "Leong's Cashew Chicken",
@@ -1724,13 +1727,13 @@
    "matched": []
   },
   {
-   "title": "20-Ingredient Brownies",
-   "line": "8 oz (227 g) dark chocolate",
+   "title": "Apple-Pear Crumble",
+   "line": "1 pinch of sugar (optional)",
    "matched": []
   },
   {
    "title": "Chocolate Chip Pancakes I",
-   "line": "4 tablespoons (1⁄2 stick) unsalted butter",
+   "line": "4 teaspoons baking powder",
    "matched": []
   },
   {
@@ -1739,9 +1742,11 @@
    "matched": []
   },
   {
-   "title": "Rooibos Tea",
-   "line": "brown sugar",
-   "matched": []
+   "title": "Doro Dabo (Ethiopian Chicken with Spiced Bread)",
+   "line": "1 teaspoon paprika",
+   "matched": [
+    "paprika"
+   ]
   },
   {
    "title": "Bibimbap",
@@ -1749,8 +1754,8 @@
    "matched": []
   },
   {
-   "title": "Cocoyam Fufu",
-   "line": "water",
+   "title": "Boule-Di (Senegalese Fish and Rice)",
+   "line": "1 tablespoon tomato paste",
    "matched": []
   },
   {
@@ -1759,33 +1764,33 @@
    "matched": []
   },
   {
-   "title": "Turkey with Plantain Stuffing (Pavo Relleno de Mofongo)",
-   "line": "2 packages of uncolored sazon (sazon sin achiote—uncolored seasoned salt. goya is a typical brand.)",
+   "title": "Flan de Queso (Cream Cheese Flan)",
+   "line": "14 oz leche condensada (sweetened condensed milk)",
    "matched": []
   },
   {
    "title": "Hazelnut Torte",
-   "line": "1 cup caster sugar",
+   "line": "1⁄2 tsp cocoa powder",
    "matched": []
   },
   {
    "title": "Potato and Garlic Ravioli Filling",
-   "line": "4 tbsp olive oil",
+   "line": "1⁄2 tsp salt",
    "matched": []
   },
   {
-   "title": "Poached Salmon with wild Huckleberries",
-   "line": "1⁄2 cup huckleberries",
+   "title": "Rosemary Grilled Salmon Steaks",
+   "line": "1 tbsp canola oil",
    "matched": []
   },
   {
-   "title": "Yam and Egg Sauce",
-   "line": "groundnut oil",
+   "title": "Kunafa Bil Ashta (Egyptian Clotted Cream Pastry)",
+   "line": "2 cups ashta (similar to clotted cream)",
    "matched": []
   },
   {
-   "title": "Onion Rings",
-   "line": "3 eggs, beaten",
+   "title": "Nibbles",
+   "line": "2 boxes (16 cups/1 kg/2.2 lb) rice chex cereal",
    "matched": []
   },
   {
@@ -1795,12 +1800,12 @@
   },
   {
    "title": "Shiro Wat (Ethiopian Pea Stew)",
-   "line": "1⁄4 cup oil",
+   "line": "salt, to taste",
    "matched": []
   },
   {
    "title": "Caramel Coffee Cake",
-   "line": "1 teaspoon baking soda",
+   "line": "1 pinch salt",
    "matched": []
   },
   {
@@ -1809,50 +1814,58 @@
    "matched": []
   },
   {
-   "title": "Chicken Soup with Pasta",
-   "line": "1⁄4 teaspoon thyme",
-   "matched": [
-    "thyme"
-   ]
+   "title": "Chicken Broth II",
+   "line": "1 whole chicken (without gizzards) or 3 pounds (1.3 kg) chicken parts",
+   "matched": []
   },
   {
    "title": "Greek Moussaka",
-   "line": "2 tablespoons tomato paste",
+   "line": "sprinkle of nutmeg, cinnamon, and black pepper",
+   "matched": [
+    "black_pepper",
+    "cinnamon",
+    "nutmeg"
+   ]
+  },
+  {
+   "title": "Egg with Cabbage and Turkish Sausage",
+   "line": "finely-chopped parsley or cilantro (optional)",
    "matched": []
   },
   {
-   "title": "Tuna Fried Rice",
-   "line": "tabasco to taste",
+   "title": "8 Desserts in 1 Pan",
+   "line": "2 sheets shortcrust pastry",
    "matched": []
   },
   {
-   "title": "Risengrød",
-   "line": "50 g butter",
-   "matched": []
+   "title": "Coffee Cake",
+   "line": "1 teaspoon vanilla extract",
+   "matched": [
+    "vanilla"
+   ]
   },
   {
-   "title": "Mushroom Ketchup",
-   "line": "2 lbs edible mushrooms, chopped",
-   "matched": []
-  },
-  {
-   "title": "Fried Tiger Lily Pastries",
-   "line": "1 cup water",
+   "title": "Fireweed Scones",
+   "line": "2 cups all-purpose flour",
    "matched": []
   },
   {
    "title": "Snezhanka (Bulgarian Cucumber and Yogurt Salad)",
    "line": "2–3 cloves crushed garlic",
-   "matched": []
+   "matched": [
+    "garlic"
+   ]
   },
   {
-   "title": "Homemade Red Wine",
-   "line": "1 handful whole wheat",
-   "matched": []
+   "title": "Lasagne with Red and White Sauce",
+   "line": "pepper",
+   "matched": [
+    "black_pepper"
+   ]
   },
   {
-   "title": "Baked Lemon Thyme Halibut",
-   "line": "1 tbsp extra-virgin olive oil",
+   "title": "Halibut Cheek Stir-Fry",
+   "line": "1 lb (450 g) halibut cheeks",
    "matched": []
   },
   {
@@ -1861,15 +1874,13 @@
    "matched": []
   },
   {
-   "title": "Pouch-Roasted Snapper",
-   "line": "1 1⁄2 sprigs rosemary",
-   "matched": [
-    "rosemary"
-   ]
+   "title": "Fruit Cake",
+   "line": "100 g strawberry, halved",
+   "matched": []
   },
   {
    "title": "Oatmeal Stout Brownies",
-   "line": "1⁄3 cup superfine or granulated sugar",
+   "line": "3⁄4 cup unsweetened cocoa powder",
    "matched": []
   },
   {
@@ -1884,39 +1895,39 @@
   },
   {
    "title": "Qarabagħli Mimli (Maltese Stuffed Summer Squash)",
-   "line": "1 cup bolognese-type meat sauce",
+   "line": "salt",
    "matched": []
   },
   {
    "title": "Bhuna Khichuri (Bengali Rice and Lentils)",
-   "line": "4 whole cloves",
+   "line": "1 medium or 2 small onions, thinly sliced",
    "matched": [
-    "cloves"
+    "onion"
    ]
   },
   {
-   "title": "Mushroom Barley Bean Soup",
-   "line": "vegetable or chicken soup mix or stock",
+   "title": "Green Bean Casserole",
+   "line": "1 cup milk",
    "matched": []
   },
   {
-   "title": "Kuih Seri Muka (Malaysian Sticky Rice with Pandan Custard)",
-   "line": "170 g white granulated sugar",
+   "title": "Yeasted Vanilla Sponge Cake",
+   "line": "90 g vegetable oil",
    "matched": []
   },
   {
-   "title": "Tuna Melt Fishcakes",
-   "line": "200 g ricotta cheese",
+   "title": "East Frisian Tea",
+   "line": "1 piece per person of rock sugar, locally called kluntjes",
    "matched": []
   },
   {
-   "title": "Tembleque (Puerto Rican Coconut Pudding)",
-   "line": "1⁄4 cup cornstarch or rice flour",
+   "title": "Ghavoot (Iranian Nut and Seed Powder)",
+   "line": "cottonseeds",
    "matched": []
   },
   {
-   "title": "Sweet and Spicy Asian Chicken",
-   "line": "3 eggs, beaten",
+   "title": "Baked Chicken Breasts",
+   "line": "finely-grated lemon zest",
    "matched": []
   },
   {
@@ -1925,33 +1936,33 @@
    "matched": []
   },
   {
-   "title": "Goong Ten (Raw Shrimp Salad)",
-   "line": "2 tablespoons fish sauce",
-   "matched": []
-  },
-  {
-   "title": "Chicken and Corn Empanadas",
-   "line": "kosher salt and fresh ground black pepper to taste",
+   "title": "Fuk-Thong Pad Khai (Thai Stir-Fried Pumpkin)",
+   "line": "1 pinch pepper",
    "matched": [
     "black_pepper"
    ]
   },
   {
-   "title": "Nigerian Peppered Turkey Wings",
-   "line": "1⁄2 teaspoon ginger",
+   "title": "Monkey Bread I",
+   "line": "3⁄4 cup white granulated sugar",
+   "matched": []
+  },
+  {
+   "title": "Chickpea Moi Moi",
+   "line": "11⁄2 cups dry chickpeas",
+   "matched": []
+  },
+  {
+   "title": "Brown Sauce (Hartshorne)",
+   "line": "2 tbsp french vinegar",
+   "matched": []
+  },
+  {
+   "title": "Potatoes Colcannon",
+   "line": "black pepper",
    "matched": [
-    "ginger"
+    "black_pepper"
    ]
-  },
-  {
-   "title": "Potato Gnocchi with Basil and Sun-dried Tomatoes",
-   "line": "500 g potato gnocchi",
-   "matched": []
-  },
-  {
-   "title": "Chocolate Chip Cookies IV",
-   "line": "11⁄4 cups (175 g / 6 oz) all-purpose flour",
-   "matched": []
   },
   {
    "title": "Cucumber and Buttermilk Soup",
@@ -1964,11 +1975,9 @@
    "matched": []
   },
   {
-   "title": "Ful Medames (Egyptian Fava Beans)",
-   "line": "black pepper to taste",
-   "matched": [
-    "black_pepper"
-   ]
+   "title": "Koshari (Egyptian Rice with Pasta and Lentils)",
+   "line": "salt to taste",
+   "matched": []
   },
   {
    "title": "Wheat Modak (Coconut Pastries)",
@@ -1978,23 +1987,25 @@
    ]
   },
   {
-   "title": "Super Foamy Milkshake",
-   "line": "200 ml skimmed milk",
+   "title": "Guacamole III",
+   "line": "1⁄2 red onion, diced",
+   "matched": [
+    "onion"
+   ]
+  },
+  {
+   "title": "Pumpkin Bread II",
+   "line": "3 cups white granulated sugar",
    "matched": []
   },
   {
-   "title": "Pastry Dough (recipe)",
-   "line": "1 egg yolk",
+   "title": "Bacon and Egg Stuffed Tomatoes",
+   "line": "6 slices bacon, cooked and crumbled; or 4 tablespoons bacon bits",
    "matched": []
   },
   {
-   "title": "Peanut Chicken Stir-Fry",
-   "line": "1 cup peanuts",
-   "matched": []
-  },
-  {
-   "title": "Cinnamon-braised Chicken (Kotopoulo Kapama)",
-   "line": "1 stick of celery, cut into thin 3-inch strips",
+   "title": "Sweet Italian Sausage Skillet",
+   "line": "12 oz (330 g) sweet italian sausage links",
    "matched": []
   },
   {
@@ -2005,36 +2016,42 @@
   {
    "title": "Döner Kebab",
    "line": "1–3 cloves garlic, chopped",
-   "matched": []
+   "matched": [
+    "garlic"
+   ]
   },
   {
    "title": "Julia Child's Boeuf Bourguignon",
-   "line": "3 1⁄2 tablespoons butter",
+   "line": "1 onion, sliced",
+   "matched": [
+    "onion"
+   ]
+  },
+  {
+   "title": "Banga Soup",
+   "line": "4 cups raw palm nuts or 800 ml canned palm nut extract",
    "matched": []
   },
   {
-   "title": "Koko da Kosai (Fermented Corn Porridge and Bean Fritters)",
-   "line": "2 cups water (for mixing)",
+   "title": "Oven Ribs",
+   "line": "your favorite barbecue sauce",
    "matched": []
   },
   {
-   "title": "Beef Stir-Fry",
-   "line": "1⁄4 cup scallions, julienned",
+   "title": "Ikinyomoro n'Ibishyimbo (Rwandan Smoked Fish with Beans)",
+   "line": "1 onion, finely chopped",
+   "matched": [
+    "onion"
+   ]
+  },
+  {
+   "title": "Chocolate Chip Cookies I",
+   "line": "add a small amount of oatmeal to give cookies more flavor and mouth-feel.",
    "matched": []
   },
   {
-   "title": "Ikijumba n'Umutsima (Rwandan Sweet Potato Stew with Corn and Bean Dish)",
-   "line": "1 cup cooked beans",
-   "matched": []
-  },
-  {
-   "title": "Chocolate Chip Balls",
-   "line": "1 teaspoon baking powder",
-   "matched": []
-  },
-  {
-   "title": "Tuscan Soup (Meatless)",
-   "line": "3 cups thinly-sliced fresh escarole or spinach",
+   "title": "Indian Pudding",
+   "line": "1⁄2 teaspoon salt",
    "matched": []
   },
   {
@@ -2043,42 +2060,40 @@
    "matched": []
   },
   {
-   "title": "White House Honey Ale",
-   "line": "1 pkg windsor dry ale yeast",
+   "title": "Malpua (South Asian Sweet Pancake)",
+   "line": "ghee",
    "matched": []
   },
   {
-   "title": "Chipotle BBQ Rub",
-   "line": "1⁄4 cup salt",
+   "title": "Backyard BBQ Chicken",
+   "line": "1⁄4 cup apple cider vinegar",
    "matched": []
   },
   {
-   "title": "Percolator Punch",
-   "line": "1 tablespoon allspice",
+   "title": "Mini English Muffin Pizzas",
+   "line": "1 package pepperoni",
+   "matched": []
+  },
+  {
+   "title": "Biltong (Zambian Dried and Salted Meat)",
+   "line": "2 tablespoons ground coriander",
    "matched": [
-    "allspice"
+    "coriander_seed"
    ]
   },
   {
-   "title": "Zambian Beans and Rice",
-   "line": "1 hot pepper, chopped (optional, for heat)",
+   "title": "Chocolate Chip Pancakes II",
+   "line": "2 teaspoons white granulated sugar",
    "matched": []
   },
   {
-   "title": "Traditional British Brewed Tea",
-   "line": "loose-leaf tea",
+   "title": "Scotch Bonnet Pepper Poppers",
+   "line": "1 cup whole milk ricotta cheese",
    "matched": []
-  },
-  {
-   "title": "Butternut Squash Soup",
-   "line": "1 tsp nutmeg",
-   "matched": [
-    "nutmeg"
-   ]
   },
   {
    "title": "Yeasted Kifli",
-   "line": "1⁄2 lb (1 cup) butter",
+   "line": "3 egg yolks",
    "matched": []
   },
   {
@@ -2088,7 +2103,7 @@
   },
   {
    "title": "Roast Beef",
-   "line": "extra beef bones (optional)",
+   "line": "1⁄4 cup olive oil or other good cooking oil",
    "matched": []
   },
   {
@@ -2103,57 +2118,61 @@
   },
   {
    "title": "Miyan Ridi (Nigerian Sesame Soup)",
-   "line": "2 medium-sized dried smoked fish, cleaned and deboned",
-   "matched": []
+   "line": "onion, sliced",
+   "matched": [
+    "onion"
+   ]
   },
   {
-   "title": "Oven-Fried Chicken Breasts",
-   "line": "1⁄4 cup freshly squeezed lemon juice",
-   "matched": []
+   "title": "Hickory Smoked Chicken Breasts",
+   "line": "10 sprigs fresh thyme, finely chopped",
+   "matched": [
+    "thyme"
+   ]
   },
   {
-   "title": "Philly Cheesesteak",
-   "line": "olive oil",
+   "title": "Mexican Tequila Marinade",
+   "line": "1⁄4 cup freshly-squeezed lime juice",
    "matched": []
   },
   {
    "title": "Rabbit with Abbey Beer (Konijn met Paterbier)",
-   "line": "1 rabbit",
+   "line": "prepared mustard",
    "matched": []
   },
   {
-   "title": "Banga Rice",
-   "line": "1⁄2 cup scent leaf, sliced",
+   "title": "Boiled Cocoyam",
+   "line": "salt",
    "matched": []
   },
   {
-   "title": "Stuffed Pork Roast",
-   "line": "1 ea. (3–4 pounds) boneless pork loin roast",
+   "title": "Spanish Rice",
+   "line": "2 tbsp unsalted butter",
    "matched": []
   },
   {
    "title": "Nasi Goreng (Indonesian Fried Rice)",
-   "line": "4 fish meatballs",
+   "line": "sliced chicken liver",
    "matched": []
   },
   {
-   "title": "Muboora (Zimbabwean Pumpkin Leaves Stew)",
-   "line": "2–3 cloves of garlic, minced",
+   "title": "Rice Modak (Coconut Pastries) II",
+   "line": "1 cup water",
    "matched": []
   },
   {
-   "title": "Tex-Mex Sliders",
-   "line": "1 tbsp chipotle powder",
+   "title": "Eve's Apple (Cinnamon Raisin-stuffed Apple)",
+   "line": "1 small baking apple",
    "matched": []
   },
   {
    "title": "Brown Rice Casserole",
-   "line": "1 can (4 ounces) mushrooms",
+   "line": "1⁄2 cup slivered almonds",
    "matched": []
   },
   {
-   "title": "Traditional Finnish Lemon Mead (Sima)",
-   "line": "2–3 lemons",
+   "title": "Peanut Sauce (Saus Kacang)",
+   "line": "water",
    "matched": []
   },
   {
@@ -2167,13 +2186,13 @@
    "matched": []
   },
   {
-   "title": "Smoky Chipotle Hot Sauce",
-   "line": "3 tbsp malt vinegar",
+   "title": "Maple Cumin Glazed Grilled Bananas",
+   "line": "2 tbsp dark rum",
    "matched": []
   },
   {
    "title": "Caponata (Sicilian Eggplant and Vegetables)",
-   "line": "1 1⁄4 (570 g) pounds celery ribs",
+   "line": "1⁄3 cup vinegar",
    "matched": []
   },
   {
@@ -2182,8 +2201,8 @@
    "matched": []
   },
   {
-   "title": "Ager Soup",
-   "line": "1 maggi cube",
+   "title": "Nune Soup",
+   "line": "salt",
    "matched": []
   },
   {
@@ -2194,10 +2213,10 @@
    ]
   },
   {
-   "title": "French Onioned Chicken",
-   "line": "paprika (optional)",
+   "title": "Ekwang (Cameroonian Taro Leaf Stew)",
+   "line": "4 cloves of garlic, minced",
    "matched": [
-    "paprika"
+    "garlic"
    ]
   },
   {
@@ -2211,8 +2230,8 @@
    "matched": []
   },
   {
-   "title": "Fried Pickle",
-   "line": "1 qt sliced dill pickles",
+   "title": "Vedhmi (Sweet Stuffed Flatbread)",
+   "line": "100 ml oil",
    "matched": []
   },
   {
@@ -2221,28 +2240,24 @@
    "matched": []
   },
   {
-   "title": "American Marinara Sauce I",
-   "line": "1⁄2 tsp ground black pepper",
-   "matched": [
-    "black_pepper"
-   ]
-  },
-  {
-   "title": "Arancini (Italian Fried Rice Balls)",
-   "line": "2 cups of your favorite marinara sauce",
+   "title": "Espagnole Sauce (Mrs. W.G. Waters)",
+   "line": "1 tomato",
    "matched": []
   },
   {
-   "title": "Duonos Gira (Lithuanian Rye Drink)",
-   "line": "4 teaspoons yeast",
+   "title": "Arancini (Italian Fried Rice Balls)",
+   "line": "4 oz of fresh mozzarella, grated",
+   "matched": []
+  },
+  {
+   "title": "Creamed Spinach",
+   "line": "1⁄2 dl cream or 1 tbsp butter",
    "matched": []
   },
   {
    "title": "Paella de Marisco",
-   "line": "8–10 strands of saffron (or 11⁄2 teaspoons food coloring; see notes)",
-   "matched": [
-    "saffron"
-   ]
+   "line": "4 liters water",
+   "matched": []
   },
   {
    "title": "Fried Chicken",
@@ -2251,27 +2266,29 @@
   },
   {
    "title": "Hamburger Deluxe",
-   "line": "sour cream",
+   "line": "1 tablespoon butter",
    "matched": []
   },
   {
-   "title": "Four in One Pizza",
-   "line": "1⁄4 cup drained chopped pineapple",
+   "title": "Beer Batter",
+   "line": "1⁄2 cup flour",
    "matched": []
   },
   {
-   "title": "Mató de Pedralbes (Spanish Maize Custard)",
-   "line": "10 yolks",
+   "title": "Smoky Tuna Melts",
+   "line": "2 tbsp melted butter",
    "matched": []
   },
   {
    "title": "Stuffed Squash",
-   "line": "1⁄4 cup almond oil",
-   "matched": []
+   "line": "1 small yellow onion, diced",
+   "matched": [
+    "onion"
+   ]
   },
   {
    "title": "Classic American Apple Pie",
-   "line": "1⁄4 cup tapioca starch",
+   "line": "5–7 tbsp applejack (apple brandy) or hard cider",
    "matched": []
   },
   {
@@ -2280,23 +2297,25 @@
    "matched": []
   },
   {
-   "title": "Mukimo",
-   "line": "1 kg potatoes, peeled and chopped",
+   "title": "Sabaayad",
+   "line": "2 tablespoons vegetable oil",
    "matched": []
   },
   {
-   "title": "Adult Macaroni and Cheese",
-   "line": "1⁄2 cup (60 g / 2.1 oz) grated gruyere",
+   "title": "Caramelized Raspberry Sauce",
+   "line": "1⁄4 cup white granulated sugar",
    "matched": []
   },
   {
-   "title": "Ekwang (Cameroonian Taro Leaf Stew)",
-   "line": "2 tablespoons palm oil",
-   "matched": []
+   "title": "Tegabino Shiro (Ethiopian Spiced Chickpea Dip)",
+   "line": "1 tablespoon grated ginger",
+   "matched": [
+    "ginger"
+   ]
   },
   {
-   "title": "Ewedu Soup (Yoruba Style)",
-   "line": "3 cups ewedu leaves (fresh or dried)",
+   "title": "Nyama Yemombe (Zimbabwean Beef Stew)",
+   "line": "1 beef stock cube or 1⁄2 teaspoon salt",
    "matched": []
   },
   {
@@ -2305,13 +2324,13 @@
    "matched": []
   },
   {
-   "title": "Arancini (Italian Fried Rice Balls)",
-   "line": "4 oz of ham, chopped",
+   "title": "Lentil Burgers",
+   "line": "salt to taste",
    "matched": []
   },
   {
-   "title": "Chicken Soup I",
-   "line": "celery, cross-cut into 5–10 mm slices",
+   "title": "Chicken Gyros",
+   "line": "1.3 pounds (~590 grams) chicken breast, diced",
    "matched": []
   },
   {
@@ -2322,8 +2341,8 @@
    ]
   },
   {
-   "title": "Egg White Carrot Brownies",
-   "line": "powdered sugar",
+   "title": "Strawberry Frozen Yogurt",
+   "line": "1⁄2 cup white granulated sugar",
    "matched": []
   }
  ]
